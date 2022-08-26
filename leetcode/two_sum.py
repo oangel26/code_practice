@@ -12,13 +12,36 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        len_nums = len(nums)
-        for i in range(0, len_nums - 1):
-            for j in range(i + 1, len_nums):
-                if (nums[i] + nums[j]) == target:
-                    return [i, j]
-        return []
+        dict = {}
 
+        for i, v in enumerate(nums):
+            if target - v in dict:
+                return([dict[target-v], i])
+            else:
+                dict[v] = i
+
+"""
+    * Solution 49% optimal
+
+    len_nums = len(nums)
+    for i in range(0, len_nums - 1):
+        for j in range(i + 1, len_nums):
+            if (nums[i] + nums[j]) == target:
+                return [i, j]
+    return []
+
+ --------------------------
+
+
+    * Solution 51% optimal
+
+    for i in range(len(nums)):
+        try:
+            j = nums.index(target - nums[i], i + 1)
+            return [i, j]
+        except:
+    continue
+"""
 
 if __name__ == "__main__":
     nums1 = [3, 3]
