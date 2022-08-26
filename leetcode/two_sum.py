@@ -12,20 +12,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        num_list = []
-        swich = 0
-        for i in range(0, len(nums)):
-            for j in range(0, len(nums)):
-                if i == j:
-                    continue
+        len_nums = len(nums)
+        for i in range(0, len_nums - 1):
+            for j in range(i + 1, len_nums):
                 if (nums[i] + nums[j]) == target:
-                    swich = 1
-                    num_list.append(i)
-                    num_list.append(j)
-                    break
-            if swich == 1:
-                break
-        return num_list
+                    return [i, j]
+        return []
 
 
 if __name__ == "__main__":
